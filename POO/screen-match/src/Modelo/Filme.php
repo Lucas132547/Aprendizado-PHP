@@ -1,9 +1,28 @@
 <?php
 
+require __DIR__ . '/Genero.php';
+
 class Filme {
-    public string $nome;
-    public string $genero;
-    public int $anoLancamento;
-    public float $nota;
+    private array $notas;
+
+    public function __construct(
+        public readonly string $nome, 
+        public readonly int $anoLancamento, 
+        public readonly Genero $genero
+     ) {
+        $this->notas = [];
+    }
+
+    public function avalia(float $nota): void {
+        $this->notas[] = $nota;
+    }
+
+    public function media(): float {
+         $somaNotas = array_sum($this->notas);
+
+         $quantidadeNotas = count($this->notas);
+
+         return $somaNotas / $quantidadeNotas;
+    }
 }
 
