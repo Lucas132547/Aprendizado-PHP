@@ -4,6 +4,7 @@ require __DIR__ . '/src/Modelo/Genero.php';
 require __DIR__ . '/src/Modelo/Titulo.php';
 require __DIR__ . '/src/Modelo/Filme.php';
 require __DIR__ . '/src/Modelo/serie.php';
+require __DIR__ . '/src/Services/calculadoraDeMaratona.php';
 
 echo "Bem-vindo ao sistema de filmes!\n";
 
@@ -35,3 +36,9 @@ $serie->avalia(9.5);
 $serie->avalia(8);
 
 echo $serie->media() . "\n";
+
+$calculadora = new calculadoraDeMaratona();
+$calculadora->inclui($filme);
+$calculadora->inclui($serie);
+
+echo "Duração total da maratona: " . $calculadora->getDuracaoTotal() . " minutos\n";
